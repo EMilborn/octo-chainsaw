@@ -14,12 +14,45 @@ Add the following to your previous work:
 
 //thelist.addEventListener("mouseover", function() {console.log("bleh")});
 
-var listItem=function(){
+//global variables
+var list=document.getElementById("thelist");
+var listItems=document.getElementsByTagName("li");
+var head=document.getElementById("h");
+var ogHeadHTML=head.innerHTML
+
+var newListItem=function(){
     var x=document.createElement("li");
-    x.innerhtml="new thing"; 
+    x.innerHTML="new thing :O";
+    listItemEvents(x);
+    list.appendChild(x);
+}
+//function should be before eventlistener
+b.addEventListener("click", newListItem);
+
+//functions for list items
+var changeHead=function(){
+  head.innerHTML=this.innerHTML;
+}
+var originalHead=function(){
+  head.innerHTML=ogHeadHTML;
+}
+var removeItem=function(){
+  this.remove();
 }
 
+var listItemEvents=function(e){
+  e.addEventListener("mouseover", changeHead);
+  e.addEventListener("mouseout", originalHead);
+  e.addEventListener("click", removeItem);
+}
 
-b.addEventerListener("click", thelist.appendChild(listItem));
+//goes thru list to add eventlisteners
+for(i=0;i<listItems.length;i++){
+  listItemEvents(listItems[i]);
+}
 
-		     
+var newFib=function(){
+
+}
+
+b1.addEventListener("click", newFib)
