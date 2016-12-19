@@ -52,7 +52,16 @@ for(i=0;i<listItems.length;i++){
 }
 
 var newFib=function(){
+    var fibs = fibonacci.getElementsByTagName('li');
+        var length = fibs.length;
+        var newItem = document.createElement('li');
+        if (length <= 1) {
+	    newItem.innerHTML = 1
+        }
+        else {
+	    newItem.innerHTML = Number(fibs[length - 1].innerHTML) + Number(fibs[length - 2].innerHTML);
+        }
+        fibonacci.appendChild(newItem);  
+};
 
-}
-
-b1.addEventListener("click", newFib)
+b1.addEventListener("click", newFib);
